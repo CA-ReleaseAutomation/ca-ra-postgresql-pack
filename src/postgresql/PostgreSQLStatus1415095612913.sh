@@ -1,0 +1,1 @@
+pg_ctl status -D ${Data Directory}

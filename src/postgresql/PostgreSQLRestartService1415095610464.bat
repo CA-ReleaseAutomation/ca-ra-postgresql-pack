@@ -1,0 +1,1 @@
+net stop "${Service Name}" && net start "${Service Name}"

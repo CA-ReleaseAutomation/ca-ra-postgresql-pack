@@ -1,0 +1,16 @@
+{
+   "ActionPack" : {
+      "name" : "PostgreSQL",
+      "category" : "PostgreSQL",
+      "description" : "Integration actions for the PostgreSQL database.",
+      "author" : "CA Technologies",
+      "dependencies" : "",
+      "platform" : "Windows and Linux",
+      "version" : "1.0.0",
+      "license" : "",
+      "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/postgresql/hdr_left.png",
+      "lastModified" : "2014-03-04T08:04:28.324-06:00",
+      "tags" : [ ],
+      "packageName" : "postgresql"
+   }
+}

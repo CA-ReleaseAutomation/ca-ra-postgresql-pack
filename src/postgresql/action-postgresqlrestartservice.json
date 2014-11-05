@@ -1,0 +1,66 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "PostgreSQL",
+         "category" : "PostgreSQL",
+         "description" : "Integration actions for the PostgreSQL database.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "1.0.0 ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/postgresql/hdr_left.png",
+         "lastModified" : "2014-03-04T19:34:28.324+05:30",
+         "tags" : [ ],
+         "packageName" : "postgresql"
+      },
+      "name" : "PostgreSQL - Restart Service",
+      "description" : "Restart the PostgreSQL service.",
+      "inputParamList" : [ {
+         "name" : "Service Name",
+         "type" : "String",
+         "description" : "The name of the PostgreSQL service.",
+         "required" : false,
+         "defaultValue" : "postgresql-x64-9.3",
+         "variableName" : "servicename",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-04T15:36:50.604+05:30",
+      "className" : "PostgreSQLRestartService",
+      "packageName" : "com.ca.postgresql",
+      "shellType" : "DEFAULT_OS",
+      "scripts" : [ {
+         "content" : "net stop \"${Service Name}\" && net start \"${Service Name}\"",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "",
+         "name" : "PostgreSQLRestartService1415095610464.bat",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : true,
+         "timeout" : 0,
+         "waitForProcess" : true
+      }, {
+         "content" : "sudo service postgresql restart",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "",
+         "name" : "PostgreSQLRestartService1415095610526.sh",
+         "osType" : "LINUX",
+         "overwriteOutput" : true,
+         "timeout" : 0,
+         "waitForProcess" : true
+      } ]
+   }
+}

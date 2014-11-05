@@ -1,0 +1,109 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "PostgreSQL",
+         "category" : "PostgreSQL",
+         "description" : "Integration actions for the PostgreSQL database.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "1.0.0 ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/postgresql/hdr_left.png",
+         "lastModified" : "2014-03-04T19:34:28.324+05:30",
+         "tags" : [ ],
+         "packageName" : "postgresql"
+      },
+      "name" : "PostgreSQL - Run Command",
+      "description" : "Provide a command to run on the database server.",
+      "inputParamList" : [ {
+         "name" : "Working Directory",
+         "type" : "String",
+         "description" : "The directory in which PostgreSQL was installed.  For example if PostgreSQL was installed into /opt/postgres or C:\\\\Postgres then that would be the working directory for PostgreSQL.",
+         "required" : false,
+         "variableName" : "workingdirectory",
+         "arrayOption" : false
+      }, {
+         "name" : "Username",
+         "type" : "String",
+         "description" : "The username to use when authenticating with the server.",
+         "required" : false,
+         "variableName" : "username",
+         "arrayOption" : false
+      }, {
+         "name" : "Password",
+         "type" : "String",
+         "description" : "The password to use when authenticating with the server.",
+         "required" : false,
+         "variableName" : "password",
+         "arrayOption" : false
+      }, {
+         "name" : "Host",
+         "type" : "String",
+         "description" : "The host on which the database server resides.",
+         "required" : false,
+         "defaultValue" : "localhost",
+         "variableName" : "host",
+         "arrayOption" : false
+      }, {
+         "name" : "Port",
+         "type" : "Integer",
+         "description" : "The port to use when connecting to the database",
+         "required" : false,
+         "defaultValue" : "5432",
+         "variableName" : "port",
+         "arrayOption" : false
+      }, {
+         "name" : "Database Name",
+         "type" : "String",
+         "description" : "The name of the database to use for this action.",
+         "required" : false,
+         "variableName" : "databasename",
+         "arrayOption" : false
+      }, {
+         "name" : "Command",
+         "type" : "String",
+         "description" : "The command to run on the database server.",
+         "required" : false,
+         "variableName" : "command",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-04T15:36:51.353+05:30",
+      "className" : "PostgreSQLRunCommand",
+      "packageName" : "com.ca.postgresql",
+      "shellType" : "DEFAULT_OS",
+      "scripts" : [ {
+         "content" : "set PGPASSWORD=${Password}\npsql  --dbname=${Database Name} --command=\"${Command}\" --host=${Host} --username=${Username} --port=${Port}",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "${Working Directory}",
+         "name" : "PostgreSQLRunCommand1415095611213.bat",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : true,
+         "timeout" : 0,
+         "waitForProcess" : true
+      }, {
+         "content" : "export PGPASSWORD=${Password}\npsql  --dbname=${Database Name} --command=\"${Command}\" --host=${Host} --username=${Username} --port=${Port}",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "${Working Directory}",
+         "name" : "PostgreSQLRunCommand1415095611275.sh",
+         "osType" : "LINUX",
+         "overwriteOutput" : true,
+         "timeout" : 0,
+         "waitForProcess" : true
+      } ]
+   }
+}

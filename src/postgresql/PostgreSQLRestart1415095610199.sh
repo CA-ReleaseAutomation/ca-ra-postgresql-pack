@@ -1,0 +1,1 @@
+pg_ctl restart -D ${Data Directory}
